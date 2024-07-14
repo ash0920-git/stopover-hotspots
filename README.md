@@ -2,4 +2,4 @@ Here, we summarized the data, code, and necessary documents. We used Matlab and 
 The order for code running:
 1. “1_Trajectory_estimation” Folder: Part_1.py---Part_2_Main_paths_estiamtion.py;
 2. “2_PageRank” Folder: 1_geo2cellid---2_cellid2node.py---3_PageRank.m---4_getstopovers.py;
-3. “3_word_embedding”Folder: 5_getwords---6_getvectors.py
+3. “3_word_embedding”Folder: 5_getwords---6_getvectors.py.
