@@ -77,7 +77,7 @@ def main():
                     data_a = data_b
             data_c.append([data_a, count])
             data_c = data_c[1:]
-            data_d = [data for data in data_c if data[1]>1 and data[1]<15]
+            data_d = [data for data in data_c if data[1]>4 and data[1]<21]
             for k in range(len(col_data_e)):
                 d_1 = col_data_e[k]
                 try:
@@ -90,7 +90,7 @@ def main():
                     d_3 = []
                 item = [d_1] + d_2 + d_3
 
-                savecsv(path + '\\{}c.csv'.format(j + 1),item)
+                savecsv(path + '\\{}b.csv'.format(j + 1),item)
 
         print(i,len(folder1))
 
