@@ -149,8 +149,8 @@ def Map_2(save_path,csv_name):
 
 def main():
     #Absolute path
-    path1 = './2017h/'
-    path2 = './source2017/'
+    path1 = './2017/'
+    path2 = './target/'
     #Terminal
     # path1 = input('Please set part1 input folder ')
     # path1 = path1 + '/'
