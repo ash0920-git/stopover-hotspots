@@ -39,19 +39,19 @@ def savecsv(path,item,model = 'a'):
             print('Close')
             time.sleep(1)
 
-#定义一个函数,用于将数据写入csv文件
+#Save csv files
 def savecsvs(path,item,model = 'a'):
-    while True:#循环等待,直到数据成功写入csv文件
-        try:#尝试打开csv文件进行写入
-            with open(path, model, encoding='utf_8_sig', newline='') as f:#以utf-8编码方式打开csv文件,model参数决定打开方式,a为追加,w为覆盖等
-            #with open(path, model, encoding='gb18030', newline='') as f:#打开csv文件
-                w = csv.writer(f)#创建csv文件写入对象
-                w.writerows(item)#将数据item写入csv文件
-                return True#写入成功,返回True
-        except Exception as e:#如果打开csv文件失败,捕捉异常
-            print(e)#打印异常信息
-            print('请关闭表格，否则程序无法写入')#提示用户关闭csv文件
-            time.sleep(1)#等待1秒后继续循环
+    while True:
+        try:
+            with open(path, model, encoding='utf_8_sig', newline='') as f:
+            #with open(path, model, encoding='gb18030', newline='') as f:
+                w = csv.writer(f)
+                w.writerows(item)
+                return True
+        except Exception as e:
+            print(e)
+            print('请关闭表格，否则程序无法写入')
+            time.sleep(1)
 
 #Read the names of all files and folders within the directory
 def file_names(inputpath):
@@ -157,7 +157,7 @@ def main():
     # path2 = input('Please set part1 output folder')
     # path2 = path2 + '/'
 
-#Extract three columns :LONGITUDE,LATITUDE, and OBS_DATE and name them as:LATITUDE', 'LONGITUDE', 'OBSERVATION DATE'
+#Extract three columns: LONGITUDE,LATITUDE, and OBS_DATE
     csv_list = file_names(path1)[0][2]
     csv_list = [name for name in csv_list if '.csv' in name]
     for i in range(len(csv_list)):
