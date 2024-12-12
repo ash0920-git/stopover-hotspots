@@ -14,16 +14,16 @@ Y=xx(:,2);
 N = size(X,1);
 
 
-for i1=1:N %以200000米*200000米为一个单元小格子
-yzuobiao=ceil((Y(i1)-10799.5404530279)/200000);% 38  找到纬度的最大最小值 相减得到纬度差值 
-xzuobiao=ceil((X(i1)+14796209.33)/200000); %35 找到经度的最大最小值 相减得到经度差值
+for i1=1:N %200000m*200000m as a cell
+yzuobiao=ceil((Y(i1)-10799.5404530279)/200000);% 38  
+xzuobiao=ceil((X(i1)+14796209.33)/200000); %35 
 AA(i1,3)=xzuobiao; %
 AA(i1,4)=yzuobiao;
-AA(i1,5)=xzuobiao+35*(yzuobiao-1); %20N-20+M 分格子  以lat1 lon1为分格1，lat1 lon2为分格2
+AA(i1,5)=xzuobiao+35*(yzuobiao-1); %20N-20+M 
 end
 i3=1;
 BB=AA(:,5);
-for i2=1:N-1 %判断重复区域
+for i2=1:N-1 
 CC(1)=BB(1);
 if BB(i2+1,:) ~= BB(i2,:)
 CC(i3+1,:)=BB(i2+1,:);
@@ -31,7 +31,7 @@ i3=i3+1;
 end
 end
 
-N = size(CC,1);%添加0项
+N = size(CC,1);
 for i4=N+1:364
 CC(i4,:)=0;
 end 
