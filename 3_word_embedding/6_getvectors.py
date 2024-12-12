@@ -48,31 +48,31 @@ def train(sentences, vector_size=100, epoch_num=5, sg=1, seed=42):
 def test():
     model_w2v = Word2Vec.load("model_w2v")
 
-    # 获取所有词向量
+    # get all word vectors
     word_vectors = {word: model_w2v.wv[word] for word in model_w2v.wv.key_to_index.keys()}
     save_word_vectors_to_file(word_vectors, 'word_vectors.csv')
 
-    # 取出词和对应的向量
+    
     words = list(word_vectors.keys())
     vectors = np.array(list(word_vectors.values()))
 
-    # 使用 t-SNE 将 100 维向量降维到 2 维
+    # t-SNE 
     tsne = TSNE(n_components=2, random_state=42)
     vectors_2d = tsne.fit_transform(vectors)
 
-    # 将降维后的结果保存成文件
+    
     df = pd.DataFrame(vectors_2d, columns=['x', 'y'])
     df['word'] = words
     df.to_csv('word_vectors_2d.csv', index=False)
 
-    # 计算余弦距离
+    # calculate cosine distance
     cosine_dist_matrix = cosine_distances(vectors)
 
-    # 保存余弦距离到文件
+    
     dist_df = pd.DataFrame(cosine_dist_matrix, index=words, columns=words)
     dist_df.to_csv('cosine_distances.csv')
 
-    # 画二维散点图
+    # plot figures
     plt.figure(figsize=(10, 10))
     plt.scatter(df['x'], df['y'])
 
@@ -84,7 +84,7 @@ def test():
     plt.ylabel("y")
     plt.show()
 
-    # 画余弦距离热图
+    # plot the heatmap
     plt.figure(figsize=(12, 10))
     sns.heatmap(dist_df, cmap='viridis')
     #sns.heatmap(dist_df, annot=True, vmax=1, square=True, cmap='viridis', fmt='.2g')
@@ -96,7 +96,7 @@ def test():
 
 if __name__ == '__main__':
     sentences, all_words = get_dataset()
-    print("All words in the training corpus:", all_words)  # 打印用于训练语料中的所有单词
-    save_words_to_file(all_words, 'training_words.txt')  # 保存所有单词到文件
-    model_w2v = train(sentences, sg=1, seed=42)  # 设置 sg=1 使用 Skip-Gram 方法，并设置随机种子
+    print("All words in the training corpus:", all_words)  
+    save_words_to_file(all_words, 'training_words.txt')  
+    model_w2v = train(sentences, sg=1, seed=42)  # set sg=1 for Skip-Gram 
     test()
