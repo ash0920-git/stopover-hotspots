@@ -6,53 +6,53 @@ import csv
 def savetxt(path,item,model = 'a'):
     while True:
         try:
-            with open(path, model,encoding='gb18030') as f:  # 打开txt文件，使用utf-8编码并忽略错误，有些标题里有特殊字符，存入txt会报错
-                f.write(item)  # 数据写入txt
-                f.write('\n')  # 换行
+            with open(path, model,encoding='gb18030') as f:  
+                f.write(item)  
+                f.write('\n')  
                 return True
         except Exception as e:
             print(e)
             print('请关闭txt文档，否则程序无法写入')
             time.sleep(1)
 
-# 定义一个函数，用于从csv文件中读取数据
-def readcsv(path):# 参数path是文件路径
-    try:  # 使用try-except语句捕获可能发生的异常
-        with open(path, 'r', encoding='utf_8_sig') as f:  # 使用with语句打开csv文件，指定读取模式和编码
-            reader = csv.reader(f)  # 创建一个csv读取器对象
-            rows = [row for row in reader]  # 使用列表推导式，将读取器对象中的每一行数据添加到rows列表中
-        return rows  # 返回rows列表
-    except Exception as e:  # 如果发生异常，执行以下代码
-        print(e)  # 打印异常信息
-        with open(path, 'r', encoding='gb18030') as f:  # 使用with语句打开csv文件，指定读取模式和另一种编码
-            reader = csv.reader(f)  # 创建一个csv读取器对象
-            rows = [row for row in reader]  # 使用列表推导式，将读取器对象中的每一行数据添加到rows列表中
-        return rows  # 返回rows列表
+# Read csv files
+def readcsv(path):
+    try:  
+        with open(path, 'r', encoding='utf_8_sig') as f:  
+            reader = csv.reader(f)  
+            rows = [row for row in reader]  
+        return rows  
+    except Exception as e:  
+        print(e)  
+        with open(path, 'r', encoding='gb18030') as f:  
+            reader = csv.reader(f)  
+            rows = [row for row in reader]  
+        return rows  
 
 def is_num(path):
-    # 定义一个函数，判断一个字符串是否是纯数字
+    
     def is_digit(s):
         try:
-            int(s.replace('a',''))  # 尝试把字符串转换为整数
-            return True  # 如果成功，返回True
-        except ValueError:  # 如果失败，抛出异常
-            return False  # 返回False
+            int(s.replace('a',''))  
+            return True  
+        except ValueError:  
+            return False  
 
     files = []
-    # 定义一个文件夹的路径
-    folder_path = path  # 请把这里替换为你的文件夹路径
+    
+    folder_path = path  
 
-    # 遍历文件夹中的所有文件和子文件夹
+    
     for file in os.listdir(folder_path):
-        # 拼接完整的文件路径
+        
         file_path = os.path.join(folder_path, file)
-        # 判断是否是文件，而不是子文件夹
+        
         if os.path.isfile(file_path):
-            # 判断文件名是否是纯数字，不包含扩展名
-            file_name = os.path.splitext(file)[0]  # 分离文件名和扩展名
+            
+            file_name = os.path.splitext(file)[0]  
             if 'a' in file_name:
-                if is_digit(file_name):  # 调用判断函数
-                    files.append(file_path)  # 打印文件路径
+                if is_digit(file_name):  
+                    files.append(file_path)  
     return files
 
 def file_names(inputpath):
