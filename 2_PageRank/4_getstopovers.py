@@ -6,38 +6,38 @@ import csv
 def savecsv(path,item,model = 'a'):
     while True:
         try:
-            with open(path, model, encoding='utf_8_sig', newline='') as f:#打开csv文件
-            #with open(path, model, encoding='gb18030', newline='') as f:#打开csv文件
+            with open(path, model, encoding='utf_8_sig', newline='') as f:
+            #with open(path, model, encoding='gb18030', newline='') as f:
                 w = csv.writer(f)
-                w.writerow(item)#数据写入csv
+                w.writerow(item)
                 return True
         except:
             print('请关闭表格，否则程序无法写入')
             time.sleep(1)
 
 def is_num(path):
-    # 定义一个函数，判断一个字符串是否是纯数字
+    
     def is_digit(s):
         try:
-            int(s)  # 尝试把字符串转换为整数
-            return True  # 如果成功，返回True
-        except ValueError:  # 如果失败，抛出异常
-            return False  # 返回False
+            int(s)  
+            return True  
+        except ValueError:  
+            return False  
 
     files = []
-    # 定义一个文件夹的路径
-    folder_path = path  # 请把这里替换为你的文件夹路径
+    
+    folder_path = path  
 
-    # 遍历文件夹中的所有文件和子文件夹
+    
     for file in os.listdir(folder_path):
-        # 拼接完整的文件路径
+        
         file_path = os.path.join(folder_path, file)
-        # 判断是否是文件，而不是子文件夹
+        
         if os.path.isfile(file_path):
-            # 判断文件名是否是纯数字，不包含扩展名
-            file_name = os.path.splitext(file)[0]  # 分离文件名和扩展名
-            if is_digit(file_name):  # 调用判断函数
-                files.append(file_path)  # 打印文件路径
+            
+            file_name = os.path.splitext(file)[0]  
+            if is_digit(file_name):  
+                files.append(file_path)  
     return files
 
 def file_names(inputpath):
