@@ -15,11 +15,11 @@ N = size(X,1);
 
 
 for i1=1:N %200000m*200000m as a cell
-yzuobiao=ceil((Y(i1)-10799.5404530279)/200000);% 38  
+yzuobiao=ceil((Y(i1)-10799.5404530279)/200000);% 36 
 xzuobiao=ceil((X(i1)+14796209.33)/200000); %35 
 AA(i1,3)=xzuobiao; %
 AA(i1,4)=yzuobiao;
-AA(i1,5)=xzuobiao+35*(yzuobiao-1); %20N-20+M 
+AA(i1,5)=xzuobiao+35*(yzuobiao-1); 
 end
 i3=1;
 BB=AA(:,5);
