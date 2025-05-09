@@ -3,4 +3,4 @@ The order for code running:
 1. “1_Trajectory_estimation” Folder: Part_1.py---Part_2_Main_paths_estiamtion.py;
 2. “2_PageRank” Folder: 1_geo2cellid---2_cellid2node.py---3_PageRank.m---4_getstopovers.py;
 3. “3_word_embedding”Folder: 5_getdocuments.py---6_getvectors.py.
-code2.R can be used for map overlapping analysis.
+4. code2.R can be used for map overlapping analysis.
