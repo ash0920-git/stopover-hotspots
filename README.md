@@ -4,3 +4,4 @@ The order for code running:
 2. “2_PageRank” Folder: 1_geo2cellid---2_cellid2node.py---3_PageRank.m---4_getstopovers.py;
 3. “3_word_embedding”Folder: 5_getdocuments.py---6_getvectors.py.
 
+Data for evaluation: https://github.com/ash0920-git/stopover-hotspots/releases/tag/v1.0
