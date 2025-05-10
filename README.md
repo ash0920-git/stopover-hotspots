@@ -5,3 +5,4 @@ The order for code running:
 3. “3_word_embedding”Folder: 5_getdocuments.py---6_getvectors.py.
 
 Data for evaluation: https://github.com/ash0920-git/stopover-hotspots/releases/tag/v1.0
+code2.R can be used for method evaluation.
